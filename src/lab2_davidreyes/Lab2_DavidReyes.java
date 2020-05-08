@@ -159,6 +159,16 @@ public class Lab2_DavidReyes {
                                             cont++;
                                         }
                                     }
+                                    System.out.println("desea demoler alguna casa?");
+                                    String resp = leer.next();
+                                    if (resp.equals("si")&&demolicion<3) {
+                                        System.out.println("Ingrese la posicion de la casa que desea demoler");
+                                        int pos = leer.nextInt();
+                                       demolicion++;
+                                        lista.get(pos).setEstado("Demolicion");
+                                    }else{
+                                        System.out.println("No hay mas espacio");
+                                    }
                                     break;
                                 case 2:
                                     cont = 1;
@@ -166,6 +176,25 @@ public class Lab2_DavidReyes {
                                         if (l.getEstado().equals("Construccion")) {
                                             System.out.println(cont + "." + l);
                                             cont++;
+                                        }
+                                    }
+                                    System.out.println("desea dejar en espera la construccion?");
+                                    resp = leer.next();
+                                    if (resp.equals("si")) {
+                                        System.out.println("Ingrese la posicion de la casa que desea dejar en espera de construir");
+                                        int pos = leer.nextInt();
+                                        construccion--;
+                                        lista.get(pos).setEstado("Espera de construccion");
+                                    }else{
+                                        System.out.println("desea pasarla a la casa a lista?");
+                                        resp = leer.next();
+                                        if (resp.equals("si")) {
+                                             System.out.println("Ingrese la posicion de la casa que desea poner lista");
+                                        int pos = leer.nextInt();
+                                        construccion--;
+                                        lista.get(pos).setEstado("Lista");
+                                        }else{
+                                            System.out.println("Gracias");
                                         }
                                     }
                                     break;
@@ -176,6 +205,16 @@ public class Lab2_DavidReyes {
                                             System.out.println(cont + "." + l);
                                             cont++;
                                         }
+                                    }
+                                    System.out.println("desea construir alguna casa?");
+                                    resp = leer.next();
+                                    if (resp.equals("si")&&construccion<5) {
+                                        System.out.println("Ingrese la posicion de la casa que desea construir");
+                                        int pos = leer.nextInt();
+                                        construccion++;
+                                        lista.get(pos).setEstado("Construccion");
+                                    }else{
+                                        System.out.println("No hay mas espacios");
                                     }
                                     break;
                                 case 4:
@@ -188,11 +227,12 @@ public class Lab2_DavidReyes {
                                     }
                                     int pos;
                                     System.out.println("desea demoler una en estado de demolicion?");
-                                    String resp=leer.next();
-                                    if (resp.equals("Si")) {
+                                    resp=leer.next();
+                                    if (resp.equals("si")) {
                                         System.out.println("Ingrese la posicion de la lista ");
                                         pos = leer.nextInt();
                                         lista.remove(pos-1);
+                                        demolicion--;
                                     }else{
                                         System.out.println("Gracias por usar el programa");
                                     }
