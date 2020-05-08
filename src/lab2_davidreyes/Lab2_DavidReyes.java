@@ -10,6 +10,7 @@ public class Lab2_DavidReyes {
         log.add(new login("leobanegas", "99"));
         Scanner leer = new Scanner(System.in);
         ArrayList<Casas> lista = new ArrayList();
+        int construccion = 0, demolicion = 0;
         int numcasa;
         int numbloque;
         String color;
@@ -26,7 +27,7 @@ public class Lab2_DavidReyes {
             String usuario = leer.nextLine();
             System.out.println("Ingrese la contraseña");
             String pass = leer.nextLine();
-            if (log.get(0).getUser().equals(usuario) && log.get(0).getPass().equals(pass)) {
+            if (log.get(0).getUser().equals(usuario) && log.get(0).getPass().equals(pass)) {//validacion del login
                 while (true) {
 
                     System.out.println("1.Registros de casas\n2.Manejo de estados\n0.salir");
@@ -82,29 +83,35 @@ public class Lab2_DavidReyes {
                                             + "\n1.Lista\n2.Construccion\n3.Construccion en espera"
                                             + "\n4.Espera de demolicion");
                                     int est = leer.nextInt();
-                                    while (estado.equals("")) {
                                     switch (est) {
                                         case 1:
                                             estado = "Lista";
                                             break;
                                         case 2:
-                                            estado = "Construccion";
+                                            if (construccion < 5) {
+                                                estado = "Construccion";
+                                                construccion++;
+                                            } else {
+                                                System.out.println("No se pueden ingresar mas de construccion");
+                                            }
+
                                             break;
                                         case 3:
                                             estado = "Construccion en espera";
                                             break;
                                         case 4:
-                                            estado = "Espera de demolicion";
+                                            if (demolicion < 3) {
+                                                estado = "Espera de demolicion";
+                                                demolicion++;
+                                            }else{
+                                                System.out.println("No se puede agregar mas");
+                                            }
                                             break;
                                         default:
                                             System.out.println("Opcion no validad");
                                             break;
                                     }
-                                    System.out.println("Ingrese el Estado de la casa"
-                                            + "\n1.Lista\n2.Construccion\n3.Construccion en espera"
-                                            + "\n4.Espera de demolicion");
-                                    est = leer.nextInt();
-                                    }
+
                                     System.out.println("Nombre del Ingeniero");
                                     leer.nextLine();
                                     ing = leer.nextLine();
@@ -131,7 +138,7 @@ public class Lab2_DavidReyes {
                                         }
                                         System.out.println("Ingrese la posicion de la casa que desea borrar");
                                         int pos = leer.nextInt();
-                                        lista.remove(pos-1);
+                                        lista.remove(pos - 1);
                                     }
                                     break;
                                 default:
@@ -139,7 +146,51 @@ public class Lab2_DavidReyes {
                             }
                             break;
                         case 2:
-                            
+                            System.out.println("Ingrese el Estado a listar"
+                                    + "\n1.Lista\n2.Construccion\n3.Construccion en espera"
+                                    + "\n4.Espera de demolicion");
+                            int est = leer.nextInt();
+                            switch (est) {
+                                case 1:
+                                    int cont = 1;
+                                    for (Casas l : lista) {
+                                        if (l.getEstado().equals("Lista")) {
+                                            System.out.println(cont + "." + l);
+                                            cont++;
+                                        }
+                                    }
+                                    break;
+                                case 2:
+                                    cont = 1;
+                                    for (Casas l : lista) {
+                                        if (l.getEstado().equals("Construccion")) {
+                                            System.out.println(cont + "." + l);
+                                            cont++;
+                                        }
+                                    }
+                                    break;
+                                case 3:
+                                    cont = 1;
+                                    for (Casas l : lista) {
+                                        if (l.getEstado().equals("Construccion en espera")) {
+                                            System.out.println(cont + "." + l);
+                                            cont++;
+                                        }
+                                    }
+                                    break;
+                                case 4:
+                                    cont = 1;
+                                    for (Casas l : lista) {
+                                        if (l.getEstado().equals("Espera de demolicion")) {
+                                            System.out.println(cont + "." + l);
+                                            cont++;
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    System.out.println("Opcion no valida");
+                            }
+
                             break;
                         default:
                             System.out.println("Opcion incorrecta");
