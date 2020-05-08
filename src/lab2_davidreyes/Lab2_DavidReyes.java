@@ -18,15 +18,13 @@ public class Lab2_DavidReyes {
         int pisos;
         int baños;
         String dueño;
-        String estado="";
+        String estado = "";
         String ing;
         while (true) {
 
             System.out.println("Ingrese el usuario");
-            leer.nextLine();
             String usuario = leer.nextLine();
             System.out.println("Ingrese la contraseña");
-            leer.nextLine();
             String pass = leer.nextLine();
             if (log.get(0).getUser().equals(usuario) && log.get(0).getPass().equals(pass)) {
                 while (true) {
@@ -75,8 +73,8 @@ public class Lab2_DavidReyes {
                                         System.out.println("Ingrese el nombre");
                                         leer.nextLine();
                                         dueño = leer.nextLine();
-                                    }else{
-                                        dueño="No tiene";
+                                    } else {
+                                        dueño = "No tiene";
                                     }
                                     System.out.println("Ingrese el Estado de la casa"
                                             + "\n1.Lista\n2.Construccion\n3.Construccion en espera"
@@ -102,22 +100,34 @@ public class Lab2_DavidReyes {
                                     lista.add(new Casas(numcasa, numbloque, color, ancho, largo, pisos, baños, dueño, estado, ing));
                                     break;
                                 case 2:
-                                    int cont=1;
+                                    int cont = 1;
                                     for (Casas l : lista) {
-                                        System.out.println(cont+"."+l);
+                                        System.out.println(cont + "." + l);
                                         cont++;
                                     }
                                     break;
                                 case 3:
                                     break;
                                 case 4:
+                                    if (lista.isEmpty()) {
+                                        System.out.println("Debe agregar casas");
+                                    } else {
+                                        cont = 1;
+                                        for (Casas l : lista) {
+                                            System.out.println(cont + "." + l);
+                                            cont++;
+                                        }
+                                        System.out.println("Ingrese la posicion de la casa que desea borrar");
+                                        int pos = leer.nextInt();
+                                        lista.remove(pos-1);
+                                    }
                                     break;
                                 default:
                                     System.out.println("Opcion invalida");
                             }
                             break;
                         case 2:
-
+                            
                             break;
                         default:
                             System.out.println("Opcion incorrecta");
