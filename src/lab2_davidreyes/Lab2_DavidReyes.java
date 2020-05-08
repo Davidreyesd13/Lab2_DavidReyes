@@ -32,6 +32,8 @@ public class Lab2_DavidReyes {
                     System.out.println("1.Registros de casas\n2.Manejo de estados\n0.salir");
                     int opcion = leer.nextInt();
                     switch (opcion) {
+                        case 0:
+                            System.exit(0);
                         case 1:
                             System.out.println("1.Crear casa\n2.Listar casas\n3.Modificar casas\n4.Borrar casa");
                             opcion = leer.nextInt();
@@ -80,6 +82,7 @@ public class Lab2_DavidReyes {
                                             + "\n1.Lista\n2.Construccion\n3.Construccion en espera"
                                             + "\n4.Espera de demolicion");
                                     int est = leer.nextInt();
+                                    while (estado.equals("")) {
                                     switch (est) {
                                         case 1:
                                             estado = "Lista";
@@ -93,11 +96,20 @@ public class Lab2_DavidReyes {
                                         case 4:
                                             estado = "Espera de demolicion";
                                             break;
+                                        default:
+                                            System.out.println("Opcion no validad");
+                                            break;
+                                    }
+                                    System.out.println("Ingrese el Estado de la casa"
+                                            + "\n1.Lista\n2.Construccion\n3.Construccion en espera"
+                                            + "\n4.Espera de demolicion");
+                                    est = leer.nextInt();
                                     }
                                     System.out.println("Nombre del Ingeniero");
                                     leer.nextLine();
                                     ing = leer.nextLine();
                                     lista.add(new Casas(numcasa, numbloque, color, ancho, largo, pisos, baños, dueño, estado, ing));
+                                    System.out.println("Casa Creada correctamente");
                                     break;
                                 case 2:
                                     int cont = 1;
