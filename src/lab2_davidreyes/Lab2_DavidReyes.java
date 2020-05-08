@@ -186,6 +186,16 @@ public class Lab2_DavidReyes {
                                             cont++;
                                         }
                                     }
+                                    int pos;
+                                    System.out.println("desea demoler una en estado de demolicion?");
+                                    String resp=leer.next();
+                                    if (resp.equals("Si")) {
+                                        System.out.println("Ingrese la posicion de la lista ");
+                                        pos = leer.nextInt();
+                                        lista.remove(pos-1);
+                                    }else{
+                                        System.out.println("Gracias por usar el programa");
+                                    }
                                     break;
                                 default:
                                     System.out.println("Opcion no valida");
