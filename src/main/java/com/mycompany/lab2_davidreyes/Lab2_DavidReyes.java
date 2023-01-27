@@ -14,6 +14,12 @@ public class Lab2_DavidReyes {
         while (opcion != 0) {
             switch (opcion) {
                 case 1:
+                    System.out.println("Primer parametro");
+                    System.out.println("Segundo parametro");
+                    System.out.println("Tercer parametro");
+                    System.out.println("cuarto parametro");
+                    System.out.println("quinto parametro");
+                    //list.add();
 
                     break;
                 case 2:
