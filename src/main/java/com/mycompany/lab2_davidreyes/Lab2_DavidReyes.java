@@ -48,13 +48,13 @@ public class Lab2_DavidReyes {
                                             opcion = l.nextInt();
                                             switch (opcion) {
                                                 case 1:
-                                                       
+
                                                     break;
                                                 case 2:
-                                                    
+
                                                     break;
                                                 case 3:
-                                                    
+
                                                     break;
                                                 case 0:
                                                     System.exit(0);
@@ -63,8 +63,42 @@ public class Lab2_DavidReyes {
                                             }
                                         }//fin while interno
                                     } else if (user.equals(((Usuario) users.get(i)).user) && pass.equals(((Usuario) users.get(i)).Password) && i > 0) {
-                                        
-                                    }else{
+                                        System.out.println("1.- Registro de Inmueble/Solar\n"
+                                                + "2.- Manejo de Estados\n"
+                                                + "3.- Logout"
+                                                + "\n4. Comprar\n"
+                                                + "0.- Salir");
+                                        opcion = l.nextInt();
+                                        switch (opcion) {
+                                            case 1:
+                                                System.out.println("No tiene accesos");
+                                                break;
+                                            case 2:
+                                                System.out.println("No tiene accesos");
+                                                break;
+                                            case 3:
+                                                System.out.println("Buen dia");
+                                                break;
+                                            case 4:
+                                                for (Object o : list) {
+                                                    System.out.println("" + list.indexOf(o) + ". " + o);
+                                                }
+                                                System.out.println("Ingrese la opcion que desea comprar");
+                                                int c = l.nextInt();
+                                                if (list.get(c) instanceof Casas) {
+                                                    ((Casas)list.get(c)).setDue(((Usuario)users.get(i)).getNombre());
+                                                }else if(list.get(c) instanceof Edificios){
+                                                    ((Edificios)list.get(c)).setDue(((Usuario)users.get(i)).getNombre());
+                                                }else {
+                                                    ((Solar)list.get(c)).setDue(((Usuario)users.get(i)).getNombre());
+                                                }
+                                                break;
+                                            case 0:
+                                                System.exit(0);
+                                            default:
+                                                System.out.println("Opcion no valida");
+                                        }
+                                    } else {
                                         System.out.println("usuario no encontrado");
                                         break;
                                     }//fin del if

@@ -1,16 +1,19 @@
 package com.mycompany.lab2_davidreyes;
 
 public class Edificios {
-int pisos;
-int locales;
-String Direccion;
-String estado;
 
-    public Edificios(int pisos, int locales, String Direccion, String estado) {
+    int pisos;
+    int locales;
+    String Direccion;
+    String estado;
+    String due;
+
+    public Edificios(int pisos, int locales, String Direccion, String estado, String due) {
         this.pisos = pisos;
         this.locales = locales;
         this.Direccion = Direccion;
         this.estado = estado;
+        this.due = due;
     }
 
     public Edificios() {
@@ -48,9 +51,17 @@ String estado;
         this.estado = estado;
     }
 
+    public String getDue() {
+        return due;
+    }
+
+    public void setDue(String due) {
+        this.due = due;
+    }
+
     @Override
     public String toString() {
-        return "Edificio: " + "pisos: " + pisos + ", locales: " + locales + ", Direccion: " + Direccion + ", estado: " + estado;
+        return "Edificio: " + "pisos: " + pisos + ", locales: " + locales + ", Direccion: " + Direccion + ", estado: " + estado + ", Dueño: " + due;
     }
- 
+
 }

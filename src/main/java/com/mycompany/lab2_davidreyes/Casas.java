@@ -11,8 +11,9 @@ int largo;
 int bath;
 int cuartos;
 String Estado;
+String due;
 
-    public Casas(int numc, int bloq, Color color, int anch, int largo, int bath, int cuartos, String Estado) {
+    public Casas(int numc, int bloq, Color color, int anch, int largo, int bath, int cuartos, String Estado, String due) {
         this.numc = numc;
         this.bloq = bloq;
         this.color = color;
@@ -21,6 +22,7 @@ String Estado;
         this.bath = bath;
         this.cuartos = cuartos;
         this.Estado = Estado;
+        this.due = due;
     }
 
 
@@ -91,9 +93,17 @@ String Estado;
         this.Estado = Estado;
     }
 
+    public String getDue() {
+        return due;
+    }
+
+    public void setDue(String due) {
+        this.due = due;
+    }
+    
     @Override
     public String toString() {
-        return "Casas: " + "numc: " + numc + ", bloq: " + bloq + ", color: " + color + ", anch: " + anch + ", largo: " + largo + ", bath: " + bath + ", cuartos: " + cuartos + ", Estado: " + Estado;
+        return "Casas: " + "numc: " + numc + ", bloq: " + bloq + ", color: " + color + ", anch: " + anch + ", largo: " + largo + ", bath: " + bath + ", cuartos: " + cuartos + ", Estado: " + Estado+ ", Dueño: " + due;
     }
      
     
