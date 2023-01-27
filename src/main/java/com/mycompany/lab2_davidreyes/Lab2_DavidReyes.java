@@ -12,7 +12,7 @@ public class Lab2_DavidReyes {
     public static void main(String[] args) {
 
         ArrayList list = new ArrayList();
-        ArrayList users = new ArrayList();
+        ArrayList<Usuario>  users = new ArrayList();
         users.add(new Usuario("Andres", 22, "Admin", "admin1234"));
         int opcion = 1, flag = 1;
 
@@ -42,6 +42,7 @@ public class Lab2_DavidReyes {
                                 System.out.println("Ingrese el password");
                                 String pass = l.next();
                                 for (int i = 0; i < users.size(); i++) {
+                                    //Menu de Admin
                                     if (user.equals("admin") && pass.equals("admin1234")) {
                                         while (opcion != 3) {
 
@@ -56,6 +57,7 @@ public class Lab2_DavidReyes {
                                                     opcion = l.nextInt();
                                                     switch (opcion) {
                                                         case 1:
+                                                            //crear
                                                             System.out.println("1.Casas\n2.Edificios\n3.Solares");
                                                             opcion = l.nextInt();
                                                             switch (opcion) {
@@ -78,48 +80,128 @@ public class Lab2_DavidReyes {
                                                             opcion = l.nextInt();
                                                             switch (opcion) {
                                                                 case 1:
+                                                                    //Casas Mod
                                                                     for (Object o : list) {
-                                                                       
+                                                                        if (o instanceof Casas) {
+                                                                            System.out.println("" + list.indexOf(o) + "- " + o);
+                                                                        }
                                                                     }
+                                                                    System.out.println("Ingrese la casa a modificar: ");
+                                                                    int mod = l.nextInt();
                                                                     System.out.println("1.Numero de casa\n2.Numero de bloque\n3.Color\n4.Ancho\n5.Largo\n6.Baños\n7.Cuartos\n8.Estado");
                                                                     opcion = l.nextInt();
                                                                     switch (opcion) {
                                                                         case 1:
                                                                             System.out.println("Ingrese el nuevo numero de casa");
                                                                             int nc = l.nextInt();
-
+                                                                            ((Casas) list.get(mod)).setNumc(nc);
                                                                             break;
                                                                         case 2:
+                                                                            System.out.println("Ingrese el nuevo bloque");
+                                                                            int bloq = l.nextInt();
+                                                                            ((Casas) list.get(mod)).setBloq(bloq);
                                                                             break;
                                                                         case 3:
+                                                                            ((Casas) list.get(mod)).setColor(JColorChooser.showDialog(null, "elija el nuveo color", Color.yellow));
                                                                             break;
                                                                         case 4:
+                                                                            System.out.println("Ingrese el nuevo ancho");
+                                                                            int anch = l.nextInt();
+                                                                            ((Casas) list.get(mod)).setAnch(anch);
                                                                             break;
                                                                         case 5:
+                                                                            System.out.println("Ingrese el largo");
+                                                                            int larg = l.nextInt();
+                                                                            ((Casas) list.get(mod)).setLargo(larg);
                                                                             break;
                                                                         case 6:
+                                                                            System.out.println("Ingrese el nuevo numero de baños");
+                                                                            int bath = l.nextInt();
+                                                                            ((Casas) list.get(mod)).setBath(bath);
                                                                             break;
                                                                         case 7:
-
+                                                                            System.out.println("Ingrese nuevo numeros de cuartos");
+                                                                            int cuartos = l.nextInt();
+                                                                            ((Casas) list.get(mod)).setCuartos(cuartos);
                                                                             break;
                                                                         case 8:
-
+                                                                            System.out.println("Ingrese el nuevo Estado");
+                                                                            String Estado = l.next();
+                                                                            ((Casas) list.get(mod)).setEstado(Estado);
                                                                             break;
                                                                         default:
                                                                             System.out.println("Opcion no valida");
                                                                     }
                                                                     break;
                                                                 case 2:
+                                                                    //Mod Edificios
+                                                                    for (Object o : list) {
+                                                                        if (o instanceof Edificios) {
+                                                                            System.out.println("" + list.indexOf(o) + "- " + o);
+                                                                        }
+                                                                    }
+                                                                    System.out.println("Ingrese el Edificio a modificar: ");
+                                                                    mod = l.nextInt();
                                                                     System.out.println("1.Numero de pisos\n2.Cantidad de locales\n3.Direccion por referencia\n4.Estado");
+                                                                    opcion = l.nextInt();
+                                                                    switch (opcion) {
+                                                                        case 1:
+                                                                            System.out.println("Ingrese el numero de pisos");
+                                                                            int pisos = l.nextInt();
+                                                                            ((Edificios) list.get(mod)).setPisos(pisos);
+                                                                            break;
+                                                                        case 2:
+                                                                            System.out.println("Ingrese la cantidad de locales nueva");
+                                                                            int local = l.nextInt();
+                                                                            ((Edificios) list.get(mod)).setLocales(local);
+                                                                            break;
+                                                                        case 3:
+                                                                            System.out.println("Ingrese la nueva direccion");
+                                                                            l.next();
+                                                                            String dic = l.nextLine();
+                                                                            ((Edificios) list.get(mod)).setDireccion(dic);
+                                                                            break;
+                                                                        case 4:
+                                                                            System.out.println("Ingrese el nuevo Estado");
+                                                                            String Estado = l.next();
+                                                                            ((Edificios) list.get(mod)).setEstado(Estado);
+                                                                            break;
+                                                                        default:
+                                                                            System.out.println("Opcion no valida");
+                                                                    }
                                                                     break;
                                                                 case 3:
+                                                                    //mod edificios
+                                                                    for (Object o : list) {
+                                                                        if (o instanceof Solar) {
+                                                                            System.out.println("" + list.indexOf(o) + "- " + o);
+                                                                        }
+                                                                    }
+                                                                    System.out.println("Ingrese el Edificio a modificar: ");
+                                                                    mod = l.nextInt();
                                                                     System.out.println("1.ancho\n2.largo");
+                                                                    opcion = l.nextInt();
+                                                                    switch (opcion) {
+                                                                        case 1:
+                                                                            System.out.println("Ingrese el nuevo ancho");
+                                                                            int anch = l.nextInt();
+                                                                            ((Solar)list.get(mod)).setAnch(anch);
+                                                                            break;
+                                                                        case 2:
+                                                                            System.out.println("Ingrese el nuevo ancho");
+                                                                            int lar = l.nextInt();
+                                                                            ((Solar)list.get(mod)).setLargo(lar);
+                                                                            break;
+                                                                        default:
+                                                                            System.out.println("Opcion no valida");
+                                                                    }
                                                                     break;
                                                                 default:
                                                                     System.out.println("Opcion no valida");
                                                             }
                                                             break;
                                                         case 3:
+                                                            //eliminar
                                                             for (Object o : list) {
                                                                 System.out.println("" + list.indexOf(o) + "- " + o);
                                                             }
@@ -128,6 +210,7 @@ public class Lab2_DavidReyes {
                                                             list.remove(opcion);
                                                             break;
                                                         case 4:
+                                                            //listar
                                                             System.out.println("1.Todos\n2.Casas\n3.Edificios\n4.Solar");
                                                             int lisp = l.nextInt();
                                                             switch (lisp) {
@@ -173,15 +256,18 @@ public class Lab2_DavidReyes {
                                                     //manejo estados
                                                     break;
                                                 case 3:
+                                                    //log out
                                                     System.out.println("Buen dia");
                                                     break;
                                                 case 0:
+                                                    //salida del sistema
                                                     System.exit(0);
                                                 default:
                                                     System.out.println("Opcion no valida");
                                             }
                                         }//fin while interno
                                     } else if (user.equals(((Usuario) users.get(i)).user) && pass.equals(((Usuario) users.get(i)).Password) && i > 0) {
+                                       //parte de usuario
                                         System.out.println("1.- Registro de Inmueble/Solar\n"
                                                 + "2.- Manejo de Estados\n"
                                                 + "3.- Logout"
@@ -199,6 +285,7 @@ public class Lab2_DavidReyes {
                                                 System.out.println("Buen dia");
                                                 break;
                                             case 4:
+                                                // la compra
                                                 for (Object o : list) {
                                                     System.out.println("" + list.indexOf(o) + ". " + o);
                                                 }
@@ -264,7 +351,7 @@ public class Lab2_DavidReyes {
         System.out.println("Ingrese el estado");
         String estado = l.next();
         return new Casas(numc, bloq, c, anch, largo, bath, cuartos, estado, "");
-    }
+    }//fin metodo
 
     static Edificios crearEdificios() {
         System.out.println("Ingrese la cantidad de pisos");
@@ -277,7 +364,7 @@ public class Lab2_DavidReyes {
         System.out.println("Ingrese el estado del edificio");
         String estado = l.next();
         return new Edificios(pisos, locales, Direccion, estado, "");
-    }
+    }//fin metodo
 
     static Solar crearSolar() {
         System.out.println("Ingrese el ancho ");
@@ -285,5 +372,5 @@ public class Lab2_DavidReyes {
         System.out.println("Ingrese el largo");
         int largo = l.nextInt();
         return new Solar(anch, largo, largo * anch, "");
-    }
+    }// fin metodo
 }
