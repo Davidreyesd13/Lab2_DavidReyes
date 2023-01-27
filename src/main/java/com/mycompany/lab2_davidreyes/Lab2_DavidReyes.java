@@ -9,7 +9,7 @@ public class Lab2_DavidReyes {
         Scanner l = new Scanner(System.in);
         ArrayList list = new ArrayList();
         ArrayList users= new ArrayList();
-        users.add(new)
+        users.add(new Usuario("Andres", "Nuila", "Admin", "1234"));
         int opcion;
         System.out.println("1.Crear casa\n2.Crear edificios\n3.Crear Solares\n4.Listar\n0.Salir");
         opcion = l.nextInt();
