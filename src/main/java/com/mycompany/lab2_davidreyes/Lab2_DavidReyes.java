@@ -12,7 +12,7 @@ public class Lab2_DavidReyes {
     public static void main(String[] args) {
 
         ArrayList list = new ArrayList();
-        ArrayList<Usuario>  users = new ArrayList();
+        ArrayList<Usuario> users = new ArrayList();
         users.add(new Usuario("Andres", 22, "Admin", "admin1234"));
         int opcion = 1, flag = 1;
 
@@ -36,12 +36,15 @@ public class Lab2_DavidReyes {
                     switch (opcion) {
                         case 1:
                             while (flag != 0) {
+                                for (Usuario u : users) {
+                                    System.out.println("" + users.indexOf(u) + "- " + u);
+                                }
                                 System.out.println("----Log in---");
                                 System.out.println("Ingrese el user");
                                 String user = l.next();
                                 System.out.println("Ingrese el password");
                                 String pass = l.next();
-                                for (int i = 0; i < users.size(); i++) {
+                                
                                     //Menu de Admin
                                     if (user.equals("admin") && pass.equals("admin1234")) {
                                         while (opcion != 3) {
@@ -73,7 +76,6 @@ public class Lab2_DavidReyes {
                                                                 default:
                                                                     System.out.println("Opcion no valida");
                                                             }
-                                                            //
                                                             break;
                                                         case 2:
                                                             System.out.println("1.Casa\n2.Edificio\n3.Solar");
@@ -185,12 +187,12 @@ public class Lab2_DavidReyes {
                                                                         case 1:
                                                                             System.out.println("Ingrese el nuevo ancho");
                                                                             int anch = l.nextInt();
-                                                                            ((Solar)list.get(mod)).setAnch(anch);
+                                                                            ((Solar) list.get(mod)).setAnch(anch);
                                                                             break;
                                                                         case 2:
                                                                             System.out.println("Ingrese el nuevo ancho");
                                                                             int lar = l.nextInt();
-                                                                            ((Solar)list.get(mod)).setLargo(lar);
+                                                                            ((Solar) list.get(mod)).setLargo(lar);
                                                                             break;
                                                                         default:
                                                                             System.out.println("Opcion no valida");
@@ -254,6 +256,7 @@ public class Lab2_DavidReyes {
                                                     break;
                                                 case 2:
                                                     //manejo estados
+                                                    
                                                     break;
                                                 case 3:
                                                     //log out
@@ -266,8 +269,11 @@ public class Lab2_DavidReyes {
                                                     System.out.println("Opcion no valida");
                                             }
                                         }//fin while interno
-                                    } else if (user.equals(((Usuario) users.get(i)).user) && pass.equals(((Usuario) users.get(i)).Password) && i > 0) {
-                                       //parte de usuario
+                                    }
+                                    for (int i = 0; i < users.size(); i++) {
+                                        System.out.println(user );
+                                    if (user.equals(users.get(i).getUser())&& pass.equals(users.get(i).getPassword()) ) {
+                                        //parte de usuario
                                         System.out.println("1.- Registro de Inmueble/Solar\n"
                                                 + "2.- Manejo de Estados\n"
                                                 + "3.- Logout"
@@ -306,7 +312,7 @@ public class Lab2_DavidReyes {
                                         }
                                     } else {
                                         System.out.println("usuario no encontrado");
-                                        break;
+                                        
                                     }//fin del if
                                 }//fin del for
                             }
