@@ -8,8 +8,10 @@ public class Lab2_DavidReyes {
     public static void main(String[] args) {
         Scanner l = new Scanner(System.in);
         ArrayList list = new ArrayList();
+        ArrayList users= new ArrayList();
+        users.add(new)
         int opcion;
-        System.out.println("1.Crear\n2.Modificar\n3.Eliminar\n4.Listar\n0.Salir");
+        System.out.println("1.Crear casa\n2.Crear edificios\n3.Crear Solares\n4.Listar\n0.Salir");
         opcion = l.nextInt();
         while (opcion != 0) {
             switch (opcion) {
