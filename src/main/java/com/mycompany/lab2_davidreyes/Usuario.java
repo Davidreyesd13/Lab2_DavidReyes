@@ -3,16 +3,16 @@ package com.mycompany.lab2_davidreyes;
 public class Usuario {
 
     String nombre;
-    String apellido;
+    int edad;
     String user;
     String Password;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String user, String Password) {
+    public Usuario(String nombre, int edad, String user, String Password) {
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.edad = edad;
         this.user = user;
         this.Password = Password;
     }
@@ -25,12 +25,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public int getedad() {
+        return edad;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setedad(int edad) {
+        this.edad = edad;
     }
 
     public String getUser() {
@@ -51,7 +51,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario " + "nombre: " + nombre + ", apellido: " + apellido + ", user: " + user + ", Password: " + Password;
+        return "Usuario " + "nombre: " + nombre + ", apellido: " + edad + ", user: " + user + ", Password: " + Password;
     }
 
 }
