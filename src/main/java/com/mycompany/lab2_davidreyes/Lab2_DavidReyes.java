@@ -52,29 +52,72 @@ public class Lab2_DavidReyes {
                                             opcion = l.nextInt();
                                             switch (opcion) {
                                                 case 1:
-                                                    System.out.println("1. Crear\n2.Modificar\n3.Eliminar\n4.Lisatr");
+                                                    System.out.println("1. Crear\n2.Modificar\n3.Eliminar\n4.Listar");
                                                     opcion = l.nextInt();
                                                     switch (opcion) {
                                                         case 1:
                                                             System.out.println("1.Casas\n2.Edificios\n3.Solares");
-                                                            opcion=l.nextInt();
+                                                            opcion = l.nextInt();
                                                             switch (opcion) {
                                                                 case 1:
                                                                     list.add(crearCasas());
                                                                     break;
                                                                 case 2:
                                                                     list.add(crearEdificios());
-                                                                break;
+                                                                    break;
                                                                 case 3:
                                                                     list.add(crearSolar());
-                                                                break;
+                                                                    break;
                                                                 default:
                                                                     System.out.println("Opcion no valida");
                                                             }
                                                             //
                                                             break;
                                                         case 2:
-                                                            
+                                                            System.out.println("1.Casa\n2.Edificio\n3.Solar");
+                                                            opcion = l.nextInt();
+                                                            switch (opcion) {
+                                                                case 1:
+                                                                    for (Object o : list) {
+                                                                       
+                                                                    }
+                                                                    System.out.println("1.Numero de casa\n2.Numero de bloque\n3.Color\n4.Ancho\n5.Largo\n6.Baños\n7.Cuartos\n8.Estado");
+                                                                    opcion = l.nextInt();
+                                                                    switch (opcion) {
+                                                                        case 1:
+                                                                            System.out.println("Ingrese el nuevo numero de casa");
+                                                                            int nc = l.nextInt();
+
+                                                                            break;
+                                                                        case 2:
+                                                                            break;
+                                                                        case 3:
+                                                                            break;
+                                                                        case 4:
+                                                                            break;
+                                                                        case 5:
+                                                                            break;
+                                                                        case 6:
+                                                                            break;
+                                                                        case 7:
+
+                                                                            break;
+                                                                        case 8:
+
+                                                                            break;
+                                                                        default:
+                                                                            System.out.println("Opcion no valida");
+                                                                    }
+                                                                    break;
+                                                                case 2:
+                                                                    System.out.println("1.Numero de pisos\n2.Cantidad de locales\n3.Direccion por referencia\n4.Estado");
+                                                                    break;
+                                                                case 3:
+                                                                    System.out.println("1.ancho\n2.largo");
+                                                                    break;
+                                                                default:
+                                                                    System.out.println("Opcion no valida");
+                                                            }
                                                             break;
                                                         case 3:
                                                             for (Object o : list) {
@@ -85,9 +128,39 @@ public class Lab2_DavidReyes {
                                                             list.remove(opcion);
                                                             break;
                                                         case 4:
-                                                            for (Object o : list) {
-                                                                System.out.println("" + list.indexOf(o) + "- " + o);
+                                                            System.out.println("1.Todos\n2.Casas\n3.Edificios\n4.Solar");
+                                                            int lisp = l.nextInt();
+                                                            switch (lisp) {
+                                                                case 1:
+                                                                    for (Object o : list) {
+                                                                        System.out.println("" + list.indexOf(o) + "- " + o);
+                                                                    }
+                                                                    break;
+                                                                case 2:
+                                                                    for (Object o : list) {
+                                                                        if (o instanceof Casas) {
+                                                                            System.out.println("" + list.indexOf(o) + "- " + o);
+                                                                        }
+                                                                    }
+                                                                    break;
+                                                                case 3:
+                                                                    for (Object o : list) {
+                                                                        if (o instanceof Edificios) {
+                                                                            System.out.println("" + list.indexOf(o) + "- " + o);
+                                                                        }
+                                                                    }
+                                                                    break;
+                                                                case 4:
+                                                                    for (Object o : list) {
+                                                                        if (o instanceof Solar) {
+                                                                            System.out.println("" + list.indexOf(o) + "- " + o);
+                                                                        }
+                                                                    }
+                                                                    break;
+                                                                default:
+                                                                    System.out.println("Opcion no valida");
                                                             }
+
                                                             break;
                                                         case 0:
                                                             System.exit(0);
@@ -97,10 +170,10 @@ public class Lab2_DavidReyes {
                                                     }
                                                     break;
                                                 case 2:
-
+                                                    //manejo estados
                                                     break;
                                                 case 3:
-
+                                                    System.out.println("Buen dia");
                                                     break;
                                                 case 0:
                                                     System.exit(0);
@@ -192,11 +265,12 @@ public class Lab2_DavidReyes {
         String estado = l.next();
         return new Casas(numc, bloq, c, anch, largo, bath, cuartos, estado, "");
     }
-    static Edificios crearEdificios(){
+
+    static Edificios crearEdificios() {
         System.out.println("Ingrese la cantidad de pisos");
         int pisos = l.nextInt();
         System.out.println("Ingrese cantidad de locales");
-        int locales= l.nextInt();
+        int locales = l.nextInt();
         System.out.println("Ingrese la direccion del edificio");
         l.next();
         String Direccion = l.nextLine();
@@ -204,11 +278,12 @@ public class Lab2_DavidReyes {
         String estado = l.next();
         return new Edificios(pisos, locales, Direccion, estado, "");
     }
-    static Solar crearSolar(){
+
+    static Solar crearSolar() {
         System.out.println("Ingrese el ancho ");
-        int anch =l.nextInt();
+        int anch = l.nextInt();
         System.out.println("Ingrese el largo");
         int largo = l.nextInt();
-        return new Solar(anch, largo, largo*anch, "");
+        return new Solar(anch, largo, largo * anch, "");
     }
 }
