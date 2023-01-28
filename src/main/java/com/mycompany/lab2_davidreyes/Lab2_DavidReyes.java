@@ -14,7 +14,7 @@ public class Lab2_DavidReyes {
         ArrayList list = new ArrayList();
         ArrayList<Usuario> users = new ArrayList();
         users.add(new Usuario("Andres", 22, "Admin", "admin1234"));
-        int opcion = 1, flag = 1;
+        int opcion = 1, flag;
 
         while (opcion != 0) {
             System.out.println("1.- Registro de Inmueble/Solar\n"
@@ -22,6 +22,7 @@ public class Lab2_DavidReyes {
                     + "3.- Log In/Sign Up\n"
                     + "0.- Salir");
             opcion = l.nextInt();
+            flag = 1;
             switch (opcion) {
                 case 1:
                     System.out.println("Solo el admin puede entrar\n tiene que logearse");
@@ -36,13 +37,13 @@ public class Lab2_DavidReyes {
                     switch (opcion) {
                         case 1:
                             while (flag != 0) {
+                                System.out.println("----Log in---");
+                                System.out.println("Ingrese el user");
+                                String user = l.next();
+                                System.out.println("Ingrese el password");
+                                String pass = l.next();
                                 for (int i = 0; i < users.size(); i++) {
-                                    
-                                    System.out.println("----Log in---");
-                                    System.out.println("Ingrese el user");
-                                    String user = l.next();
-                                    System.out.println("Ingrese el password");
-                                    String pass = l.next();
+
                                     //Menu de Admin
                                     if (user.equals("admin") && pass.equals("admin1234")) {
                                         while (opcion != 3) {
@@ -305,7 +306,7 @@ public class Lab2_DavidReyes {
                                                 case 3:
                                                     //log out
                                                     System.out.println("Buen dia");
-                                                    i=0;
+                                                    flag = 0;
                                                     break;
                                                 case 0:
                                                     //salida del sistema
@@ -331,7 +332,7 @@ public class Lab2_DavidReyes {
                                                 break;
                                             case 3:
                                                 System.out.println("Buen dia");
-                                                i=0;
+                                                flag = 0;
                                                 break;
                                             case 4:
                                                 // la compra
@@ -353,9 +354,9 @@ public class Lab2_DavidReyes {
                                             default:
                                                 System.out.println("Opcion no valida");
                                         }
-                                    } else {
+                                    } else if (i == users.size()) {
                                         System.out.println("usuario no encontrado");
-                                        i=0;
+                                        flag = 0;
                                     }//fin del if
                                 }//fin del for
                             }
