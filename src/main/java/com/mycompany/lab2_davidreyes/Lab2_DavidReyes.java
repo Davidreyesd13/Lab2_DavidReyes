@@ -36,34 +36,32 @@ public class Lab2_DavidReyes {
                     switch (opcion) {
                         case 1:
                             while (flag != 0) {
-                                for (Usuario u : users) {
-                                    System.out.println("" + users.indexOf(u) + "- " + u);
-                                }
-                                System.out.println("----Log in---");
-                                System.out.println("Ingrese el user");
-                                String user = l.next();
-                                System.out.println("Ingrese el password");
-                                String pass = l.next();
-                                
+                                for (int i = 0; i < users.size(); i++) {
+                                    
+                                    System.out.println("----Log in---");
+                                    System.out.println("Ingrese el user");
+                                    String user = l.next();
+                                    System.out.println("Ingrese el password");
+                                    String pass = l.next();
                                     //Menu de Admin
                                     if (user.equals("admin") && pass.equals("admin1234")) {
                                         while (opcion != 3) {
 
                                             System.out.println("1.- Registro de Inmueble/Solar\n"
                                                     + "2.- Manejo de Estados\n"
-                                                    + "3.- Logout"
+                                                    + "3.- Logout\n"
                                                     + "0.- Salir");
                                             opcion = l.nextInt();
                                             switch (opcion) {
                                                 case 1:
                                                     System.out.println("1. Crear\n2.Modificar\n3.Eliminar\n4.Listar");
-                                                    opcion = l.nextInt();
-                                                    switch (opcion) {
+                                                    int opc = l.nextInt();
+                                                    switch (opc) {
                                                         case 1:
                                                             //crear
                                                             System.out.println("1.Casas\n2.Edificios\n3.Solares");
-                                                            opcion = l.nextInt();
-                                                            switch (opcion) {
+                                                            opc = l.nextInt();
+                                                            switch (opc) {
                                                                 case 1:
                                                                     list.add(crearCasas());
                                                                     break;
@@ -79,8 +77,8 @@ public class Lab2_DavidReyes {
                                                             break;
                                                         case 2:
                                                             System.out.println("1.Casa\n2.Edificio\n3.Solar");
-                                                            opcion = l.nextInt();
-                                                            switch (opcion) {
+                                                            int opm = l.nextInt();
+                                                            switch (opm) {
                                                                 case 1:
                                                                     //Casas Mod
                                                                     for (Object o : list) {
@@ -91,8 +89,8 @@ public class Lab2_DavidReyes {
                                                                     System.out.println("Ingrese la casa a modificar: ");
                                                                     int mod = l.nextInt();
                                                                     System.out.println("1.Numero de casa\n2.Numero de bloque\n3.Color\n4.Ancho\n5.Largo\n6.Baños\n7.Cuartos\n8.Estado");
-                                                                    opcion = l.nextInt();
-                                                                    switch (opcion) {
+                                                                    opm = l.nextInt();
+                                                                    switch (opm) {
                                                                         case 1:
                                                                             System.out.println("Ingrese el nuevo numero de casa");
                                                                             int nc = l.nextInt();
@@ -145,8 +143,8 @@ public class Lab2_DavidReyes {
                                                                     System.out.println("Ingrese el Edificio a modificar: ");
                                                                     mod = l.nextInt();
                                                                     System.out.println("1.Numero de pisos\n2.Cantidad de locales\n3.Direccion por referencia\n4.Estado");
-                                                                    opcion = l.nextInt();
-                                                                    switch (opcion) {
+                                                                    opm = l.nextInt();
+                                                                    switch (opm) {
                                                                         case 1:
                                                                             System.out.println("Ingrese el numero de pisos");
                                                                             int pisos = l.nextInt();
@@ -182,8 +180,8 @@ public class Lab2_DavidReyes {
                                                                     System.out.println("Ingrese el Edificio a modificar: ");
                                                                     mod = l.nextInt();
                                                                     System.out.println("1.ancho\n2.largo");
-                                                                    opcion = l.nextInt();
-                                                                    switch (opcion) {
+                                                                    opm = l.nextInt();
+                                                                    switch (opm) {
                                                                         case 1:
                                                                             System.out.println("Ingrese el nuevo ancho");
                                                                             int anch = l.nextInt();
@@ -208,8 +206,8 @@ public class Lab2_DavidReyes {
                                                                 System.out.println("" + list.indexOf(o) + "- " + o);
                                                             }
                                                             System.out.println("Ingrese la opcion que desea eliminar");
-                                                            opcion = l.nextInt();
-                                                            list.remove(opcion);
+                                                            int ope = l.nextInt();
+                                                            list.remove(ope);
                                                             break;
                                                         case 4:
                                                             //listar
@@ -256,11 +254,58 @@ public class Lab2_DavidReyes {
                                                     break;
                                                 case 2:
                                                     //manejo estados
-                                                    
+                                                    for (Object o : list) {
+                                                        System.out.println("" + list.indexOf(o) + "- " + o);
+                                                    }//impresion
+                                                    System.out.println("Ingrese el numero del estado que desea modificar");
+                                                    int ope = l.nextInt();
+                                                    System.out.println("1.Listo\n2.Construccion\n3.En espera de demolicion\n4.Espera de construccion");
+                                                    int op = l.nextInt();
+                                                    switch (op) {
+                                                        case 1:
+                                                            if (list.get(opcion) instanceof Casas) {
+                                                                ((Casas) list.get(ope)).setEstado("Listo");
+                                                            } else if (list.get(ope) instanceof Edificios) {
+                                                                ((Edificios) list.get(ope)).setEstado("Listo");
+                                                            } else {
+                                                                System.out.println("Solo se aceptan en Casas y Edificios");
+                                                            }
+                                                            break;
+                                                        case 2:
+                                                            if (list.get(opcion) instanceof Casas) {
+                                                                ((Casas) list.get(ope)).setEstado("Construccion");
+                                                            } else if (list.get(ope) instanceof Edificios) {
+                                                                ((Edificios) list.get(ope)).setEstado("Construccion");
+                                                            } else {
+                                                                System.out.println("Solo se aceptan en Casas y Edificios");
+                                                            }
+                                                            break;
+                                                        case 3:
+                                                            if (list.get(ope) instanceof Casas) {
+                                                                ((Casas) list.get(ope)).setEstado("Espera de Construccion");
+                                                            } else if (list.get(ope) instanceof Edificios) {
+                                                                ((Edificios) list.get(ope)).setEstado("Espera de Construccion");
+                                                            } else {
+                                                                System.out.println("Solo se aceptan en Casas y Edificios");
+                                                            }
+                                                            break;
+                                                        case 4:
+                                                            if (list.get(ope) instanceof Casas) {
+                                                                ((Casas) list.get(ope)).setEstado("Espera de demolicion");
+                                                            } else if (list.get(ope) instanceof Edificios) {
+                                                                ((Edificios) list.get(ope)).setEstado("Espera de demolicion");
+                                                            } else {
+                                                                System.out.println("Solo se aceptan en Casas y Edificios");
+                                                            }
+                                                            break;
+                                                        default:
+                                                            System.out.println("Opcion no valida");
+                                                    }//fin switch manejo de estados
                                                     break;
                                                 case 3:
                                                     //log out
                                                     System.out.println("Buen dia");
+                                                    i=0;
                                                     break;
                                                 case 0:
                                                     //salida del sistema
@@ -269,10 +314,7 @@ public class Lab2_DavidReyes {
                                                     System.out.println("Opcion no valida");
                                             }
                                         }//fin while interno
-                                    }
-                                    for (int i = 0; i < users.size(); i++) {
-                                        System.out.println(user );
-                                    if (user.equals(users.get(i).getUser())&& pass.equals(users.get(i).getPassword()) ) {
+                                    } else if (user.equals(users.get(i).getUser()) && pass.equals(users.get(i).getPassword())) {
                                         //parte de usuario
                                         System.out.println("1.- Registro de Inmueble/Solar\n"
                                                 + "2.- Manejo de Estados\n"
@@ -289,6 +331,7 @@ public class Lab2_DavidReyes {
                                                 break;
                                             case 3:
                                                 System.out.println("Buen dia");
+                                                i=0;
                                                 break;
                                             case 4:
                                                 // la compra
@@ -312,7 +355,7 @@ public class Lab2_DavidReyes {
                                         }
                                     } else {
                                         System.out.println("usuario no encontrado");
-                                        
+                                        i=0;
                                     }//fin del if
                                 }//fin del for
                             }
